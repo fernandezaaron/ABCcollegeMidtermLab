@@ -5,19 +5,16 @@ public class Student extends Person{
 
     final int modulePrice = 525;
     final int repeatedModulePrice = 110;
-    public Student(int numberOfModules, int numberOfRepeatModules, int amountPaid){
-        this.numberOfModules = numberOfModules;
-        this.numberOfRepeatModules = numberOfRepeatModules;
-        this.amountPaid = amountPaid;
-        this.tuitionfee = (this.numberOfModules * this.modulePrice) + (this.numberOfRepeatModules * repeatedModulePrice);
-        this.balance = tuitionfee - this.amountPaid;
-    }
+
     public int getNumberOfModules() {
         return numberOfModules;
     }
 
     public void setNumberOfModules(int numberOfModules) {
-        this.numberOfModules = numberOfModules;
+        if(numberOfModules >= 0  && numberOfModules <= 6) {
+            this.numberOfModules = numberOfModules;
+            this.tuitionfee += this.numberOfModules * this.modulePrice;
+        }
     }
 
     public int getNumberOfRepeatModules() {
@@ -25,7 +22,10 @@ public class Student extends Person{
     }
 
     public void setNumberOfRepeatModules(int numberOfRepeatModules) {
-        this.numberOfRepeatModules = numberOfRepeatModules;
+        if(numberOfRepeatModules > 2) {
+            this.numberOfRepeatModules = numberOfRepeatModules;
+            this.tuitionfee += this.numberOfRepeatModules * repeatedModulePrice;
+        }
     }
 
     public int getAmountPaid() {
@@ -34,5 +34,6 @@ public class Student extends Person{
 
     public void setAmountPaid(int amountPaid) {
         this.amountPaid = amountPaid;
+        this.balance = this.tuitionfee - this.amountPaid;
     }
 }
