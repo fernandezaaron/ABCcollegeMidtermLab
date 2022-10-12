@@ -1,20 +1,37 @@
 public class Teacher extends Person{
-
     private String department, designation;
-    private int numberOfTeachingHours;
+    private int teachingHours;
 
-    public Teacher(){
-        this.id = getId();
-        this.firstName = getFirstName();
-        this.lastName = getLastName();
-        this.gender = getGender();
-        this.address = getAddress();
-        this.phoneNumber = getPhoneNumber();
+    public String getDepartment() {
+        return department;
     }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
+    public String getDesignation() {
+        return designation;
+    }
 
-    // String designation = "CO";
+    public void setDesignation(String designation) {
+        switch (designation){
+            case "HOF":
+            case "CO":
+            case "L":
+                this.designation = designation;
+                break;
+        }
+    }
+
+    public int getTeachingHours() {
+        return teachingHours;
+    }
+
+    public void setTeachingHours(int teachingHours) {
+        this.teachingHours = teachingHours;
+    }
+// String designation = "CO";
     // int teachHours = 18;
     // float totalSalary = 1200f;
 
@@ -95,30 +112,6 @@ public class Teacher extends Person{
                 break;
         }
         return ((teachHours - defaultHours) * 325);
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
-    public int getNumberOfTeachingHours() {
-        return numberOfTeachingHours;
-    }
-
-    public void setNumberOfTeachingHours(int numberOfTeachingHours) {
-        this.numberOfTeachingHours = numberOfTeachingHours;
     }
 }
 

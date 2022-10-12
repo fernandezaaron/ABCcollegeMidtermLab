@@ -1,11 +1,14 @@
 public class Student extends Person{
     private int numberOfModules, numberOfRepeatModules, amountPaid;
 
-    private int tuitionfee, balance;
+    private int tuitionfee = 0, balance = 0;
 
     private final int modulePrice = 525;
     private final int repeatedModulePrice = 110;
 
+    public int feeDeposit(int amountPaid){
+        return this.balance -= amountPaid;
+    }
     public int getNumberOfModules() {
         return numberOfModules;
     }
@@ -35,5 +38,29 @@ public class Student extends Person{
     public void setAmountPaid(int amountPaid) {
         this.amountPaid = amountPaid;
         this.balance = this.tuitionfee - this.amountPaid;
+    }
+
+    public int getTuitionfee() {
+        return tuitionfee;
+    }
+
+    public void setTuitionfee(int tuitionfee) {
+        this.tuitionfee = tuitionfee;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public int getModulePrice() {
+        return modulePrice;
+    }
+
+    public int getRepeatedModulePrice() {
+        return repeatedModulePrice;
     }
 }

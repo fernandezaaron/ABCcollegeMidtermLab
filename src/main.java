@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class main {
 
-
+    private static ArrayList<Student> students = new ArrayList<>();
+    private static ArrayList<Teacher> teachers = new ArrayList<>();
 
     public static void main(String[] args) {
-
         menu();
     }
 
@@ -28,15 +28,12 @@ public class main {
             case 2:
                 teacherMenu();
                 break;
-
         }
     }
 
     //@Method - This is used to create the menu to choose to modify students
     public static void studentMenu(){
-        ArrayList<Student> students = new ArrayList<>();
-        Student student = new Student();
-        String studentName;
+
         int studentID;
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -48,12 +45,22 @@ public class main {
             System.out.println("5 - Fee deposit");
             System.out.println("6 - Display all students with zero balance");
             System.out.println("7 - Display all students with non-zero balance");
+            System.out.println("0 - exit to menu");
             System.out.println("Enter your choice: ");
             choice = scanner.nextInt();
-        }while(choice < 1 || choice > 7);
+        }while(choice < 0 || choice > 7);
 //        scanner.close();
         switch(choice){
+            case 0:
+                for(int i=0; i<students.size(); i++){
+                    printStudents(students.get(i));
+                }
+                studentMenu();
+                break;
+//                menu();
             case 1:
+                Student student = new Student();
+
                 System.out.print("Enter Student ID: ");
                 student.setId(scanner.nextInt());
 
@@ -72,23 +79,20 @@ public class main {
                 System.out.print("Enter Phone number: ");
                 student.setPhoneNumber(scanner.next());
 
-                System.out.println("Enter Number of Modules: ");
+                System.out.print("Enter Number of Modules: ");
                 student.setNumberOfModules(scanner.nextInt());
 
-                System.out.println("Enter Number of Repeated Modules: ");
+                System.out.print("Enter Number of Repeated Modules: ");
                 student.setNumberOfRepeatModules(scanner.nextInt());
 
-                System.out.println("Enter Amount Paid: ");
+                System.out.print("Enter Amount Paid: ");
                 student.setAmountPaid(scanner.nextInt());
 
                 students.add(student);
-                System.out.println(students.get(0).getId());
-                System.out.println(students.get(0).getFirstName());
-                System.out.println(students.get(0).getLastName());
-                System.out.println(students.get(0).getAddress());
-                System.out.println(students.get(0).getPhoneNumber());
-                System.out.println(students.get(0).getGender());
+
+                studentMenu();
                 break;
+
             case 2:
                 System.out.println("Enter Student ID to update: ");
                 studentID = scanner.nextInt();
@@ -96,32 +100,34 @@ public class main {
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID){
                         System.out.print("Enter First name: ");
-                        student.setFirstName(scanner.next());
+                        students.get(i).setFirstName(scanner.next());
 
                         System.out.print("Enter Last name: ");
-                        student.setLastName(scanner.next());
+                        students.get(i).setLastName(scanner.next());
 
                         System.out.print("Enter Gender: ");
-                        student.setGender(scanner.next());
+                        students.get(i).setGender(scanner.next());
 
                         System.out.print("Enter Address: ");
-                        student.setAddress(scanner.next());
+                        students.get(i).setAddress(scanner.next());
 
                         System.out.print("Enter Phone number: ");
-                        student.setPhoneNumber(scanner.next());
+                        students.get(i).setPhoneNumber(scanner.next());
 
                         System.out.println("Enter Number of Modules: ");
-                        student.setNumberOfModules(scanner.nextInt());
+                        students.get(i).setNumberOfModules(scanner.nextInt());
 
                         System.out.println("Enter Number of Repeated Modules: ");
-                        student.setNumberOfRepeatModules(scanner.nextInt());
+                        students.get(i).setNumberOfRepeatModules(scanner.nextInt());
 
                         System.out.println("Enter Amount Paid: ");
-                        student.setAmountPaid(scanner.nextInt());
-                        students.set(i,student);
+                        students.get(i).setAmountPaid(scanner.nextInt());
+                        students.set(i,students.get(i));
+
                     }
 
                 }
+                studentMenu();
 
                 break;
             case 3:
@@ -130,24 +136,60 @@ public class main {
 
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
-                        students.remove(student);
+                        students.remove(i);
                     }
                 }
+                studentMenu();
+
                 break;
             case 4:
+                System.out.println("Enter Student ID to update: ");
+                studentID = scanner.nextInt();
+                for (int i=0; i<students.size(); i++){
+                    if(students.get(i).id == studentID) {
+                        System.out.println(students.get(i).getBalance());
+                    }
+                }
+                studentMenu();
+
                 break;
             case 5:
+                System.out.println("Enter Student ID to update: ");
+                studentID = scanner.nextInt();
+                for (int i=0; i<students.size(); i++){
+                    if(students.get(i).id == studentID) {
+                        System.out.println(students.get(i).getFirstName() + students.get(i).getLastName());
+                        System.out.print("Enter Deposit Fee: ");
+                        int newAmountpaid = scanner.nextInt();
+                        students.get(i).feeDeposit(newAmountpaid);
+                    }
+                }
+                studentMenu();
+
                 break;
             case 6:
+                for(int i=0; i<students.size(); i++){
+                    if(students.get(i).getBalance() == 0){
+                        printStudents(students.get(i));
+                    }
+                }
+
+                studentMenu();
+
                 break;
             case 7:
+                for(int i=0; i<students.size(); i++){
+                    if(students.get(i).getBalance() != 0){
+                        printStudents(students.get(i));
+                    }
+                }
+                studentMenu();
                 break;
         }
     }
 
     //@Method - This is used to create the menu to choose to modify teachers
     public static void teacherMenu(){
-        ArrayList<Teacher> teachers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int choice;
         do{
@@ -156,12 +198,46 @@ public class main {
             System.out.println("3 - Delete teacher");
             System.out.println("4 - Calculate salary of a teacher");
             System.out.println("5 - Show all teachers");
+            System.out.println("0 - exit to menu");
             System.out.println("Enter your choice: ");
             choice = scanner.nextInt();
-        }while(choice < 1 || choice > 5);
+        }while(choice < 0 || choice > 5);
         scanner.close();
         switch(choice){
+            case 0:
+                menu();
             case 1:
+                Teacher teacher = new Teacher();
+                System.out.print("Enter Teacher ID: ");
+                teacher.setId(scanner.nextInt());
+
+                System.out.print("Enter First name: ");
+                teacher.setFirstName(scanner.next());
+
+                System.out.print("Enter Last name: ");
+                teacher.setLastName(scanner.next());
+
+                System.out.print("Enter Gender: ");
+                teacher.setGender(scanner.next());
+
+                System.out.print("Enter Address: ");
+                teacher.setAddress(scanner.next());
+
+                System.out.print("Enter Phone number: ");
+                teacher.setPhoneNumber(scanner.next());
+
+                System.out.print("Enter Department: ");
+                teacher.setDepartment(scanner.next());
+
+                System.out.print("Enter Designation: ");
+                teacher.setDesignation(scanner.next());
+
+                System.out.print("Enter Teaching Hours: ");
+                teacher.setTeachingHours(scanner.nextInt());
+
+                teachers.add(teacher);
+                teacherMenu();
+
                 break;
             case 2:
                 break;
@@ -172,5 +248,10 @@ public class main {
             case 5:
                 break;
         }
+    }
+
+    public static void printStudents(Student student){
+        System.out.println(student.getId() + " " + student.getFirstName() + " " + student.getLastName() + " " + student.getAddress()
+                + " " + student.getPhoneNumber() + " " + student.getGender());
     }
 }
