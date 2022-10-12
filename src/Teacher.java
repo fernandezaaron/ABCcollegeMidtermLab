@@ -4,7 +4,6 @@ public class Teacher extends Person{
     int numberOfTeachingHours;
 
 
-
     // String designation = "CO";
     // int teachHours = 18;
     // float totalSalary = 1200f;

@@ -6,6 +6,28 @@ public class main {
     }
 
     public static void menu(){
+        Scanner scanner1 = new Scanner(System.in);
+        int choose;
+        do{
+            System.out.println("1 - Student");
+            System.out.println("2 - Teacher");
+            System.out.println("Enter your choice: ");
+            choose = scanner1.nextInt();
+        }while(choose < 1 || choose > 2);
+        scanner1.close();
+        switch(choose){
+            case 1:
+                studentMenu();
+                break;
+            case 2:
+                teacherMenu();
+                break;
+
+        }
+    }
+
+
+    public static void studentMenu(){
         Scanner scanner = new Scanner(System.in);
         int choice;
         do{
@@ -34,6 +56,33 @@ public class main {
             case 6:
                 break;
             case 7:
+                break;
+        }
+    }
+
+    public static void teacherMenu(){
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do{
+            System.out.println("1 - Add new teacher");
+            System.out.println("2 - Update teacher");
+            System.out.println("3 - Delete teacher");
+            System.out.println("4 - Calculate salary of a teacher");
+            System.out.println("5 - Show all teachers");
+            System.out.println("Enter your choice: ");
+            choice = scanner.nextInt();
+        }while(choice < 1 || choice > 5);
+        scanner.close();
+        switch(choice){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
                 break;
         }
     }
