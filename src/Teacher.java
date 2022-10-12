@@ -1,8 +1,37 @@
-public class Teacher {
+public class Teacher extends Person{
+    private String department, designation;
+    private int teachingHours;
 
+    public String getDepartment() {
+        return department;
+    }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
-    // String designation = "CO";
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        switch (designation){
+            case "HOF":
+            case "CO":
+            case "L":
+                this.designation = designation;
+                break;
+        }
+    }
+
+    public int getTeachingHours() {
+        return teachingHours;
+    }
+
+    public void setTeachingHours(int teachingHours) {
+        this.teachingHours = teachingHours;
+    }
+// String designation = "CO";
     // int teachHours = 18;
     // float totalSalary = 1200f;
 

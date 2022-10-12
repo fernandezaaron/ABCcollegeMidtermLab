@@ -1,10 +1,10 @@
 public class Student extends Person{
-    int numberOfModules, numberOfRepeatModules, amountPaid;
+    private int numberOfModules, numberOfRepeatModules, amountPaid;
 
-    int tuitionfee, balance;
+    private int tuitionfee, balance;
 
-    final int modulePrice = 525;
-    final int repeatedModulePrice = 110;
+    private final int modulePrice = 525;
+    private final int repeatedModulePrice = 110;
 
     public int getNumberOfModules() {
         return numberOfModules;
