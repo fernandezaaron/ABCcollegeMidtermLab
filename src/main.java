@@ -10,6 +10,7 @@ public class main {
         menu();
     }
 
+    //@Method - This is used to create the menu to choose between students and teacher
     public static void menu(){
         Scanner scanner1 = new Scanner(System.in);
         int choose;
@@ -31,7 +32,7 @@ public class main {
         }
     }
 
-
+    //@Method - This is used to create the menu to choose to modify students
     public static void studentMenu(){
         ArrayList<Student> students = new ArrayList<>();
         Student student = new Student();
@@ -144,6 +145,7 @@ public class main {
         }
     }
 
+    //@Method - This is used to create the menu to choose to modify teachers
     public static void teacherMenu(){
         ArrayList<Teacher> teachers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
