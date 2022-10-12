@@ -191,6 +191,7 @@ public class main {
     //@Method - This is used to create the menu to choose to modify teachers
     public static void teacherMenu(){
         Scanner scanner = new Scanner(System.in);
+        int teacherID;
         int choice;
         do{
             System.out.println("1 - Add new teacher");
@@ -202,10 +203,11 @@ public class main {
             System.out.println("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 5);
-        scanner.close();
+//        scanner.close();
         switch(choice){
             case 0:
                 menu();
+                break;
             case 1:
                 Teacher teacher = new Teacher();
                 System.out.print("Enter Teacher ID: ");
@@ -226,32 +228,94 @@ public class main {
                 System.out.print("Enter Phone number: ");
                 teacher.setPhoneNumber(scanner.next());
 
-                System.out.print("Enter Department: ");
+                System.out.print("Enter Department(Business/Computing): ");
                 teacher.setDepartment(scanner.next());
 
-                System.out.print("Enter Designation: ");
+                System.out.print("Enter Designation(HOF/CO/L): ");
                 teacher.setDesignation(scanner.next());
 
                 System.out.print("Enter Teaching Hours: ");
+
                 teacher.setTeachingHours(scanner.nextInt());
 
                 teachers.add(teacher);
                 teacherMenu();
-
                 break;
+
             case 2:
+                System.out.print("Enter Teacher ID: ");
+                teacherID = scanner.nextInt();
+
+                for (int i=0; i<teachers.size(); i++){
+                    if(teacherID == teachers.get(i).getId()){
+                        System.out.print("Enter First name: ");
+                        teachers.get(i).setFirstName(scanner.next());
+
+                        System.out.print("Enter Last name: ");
+                        teachers.get(i).setLastName(scanner.next());
+
+                        System.out.print("Enter Gender: ");
+                        teachers.get(i).setGender(scanner.next());
+
+                        System.out.print("Enter Address: ");
+                        teachers.get(i).setAddress(scanner.next());
+
+                        System.out.print("Enter Phone number: ");
+                        teachers.get(i).setPhoneNumber(scanner.next());
+
+                        System.out.print("Enter Department(Business/Computing): ");
+                        teachers.get(i).setDepartment(scanner.next());
+
+                        System.out.print("Enter Designation(HOF/CO/L): ");
+                        teachers.get(i).setDesignation(scanner.next());
+
+                        System.out.print("Enter Teaching Hours: ");
+                        teachers.get(i).setTeachingHours(scanner.nextInt());
+
+                        teachers.set(i, teachers.get(i));
+                    }
+                }
+
+                teacherMenu();
                 break;
             case 3:
+                System.out.print("Enter Teacher ID: ");
+                teacherID = scanner.nextInt();
+
+                for (int i=0; i<teachers.size(); i++){
+                    if(teacherID == teachers.get(i).getId()){
+                        teachers.remove(i);
+                    }
+                }
+                teacherMenu();
                 break;
             case 4:
+                System.out.print("Enter Teacher ID: ");
+                teacherID = scanner.nextInt();
+
+                for (int i=0; i<teachers.size(); i++){
+                    if(teacherID == teachers.get(i).getId()){
+                        System.out.println(teachers.get(i).getNetSalary());
+                    }
+                }
+                teacherMenu();
                 break;
             case 5:
+                for(int i=0; i<teachers.size(); i++){
+                    printTeachers(teachers.get(i));
+                }
+                teacherMenu();
                 break;
         }
     }
 
     public static void printStudents(Student student){
         System.out.println(student.getId() + " " + student.getFirstName() + " " + student.getLastName() + " " + student.getAddress()
-                + " " + student.getPhoneNumber() + " " + student.getGender());
+                + " " + student.getPhoneNumber() + " " + student.getGender() + " " + student.getNumberOfModules() + " " + student.getNumberOfRepeatModules() + " " + student.getAmountPaid());
+    }
+
+    public static void printTeachers(Teacher teacher){
+        System.out.println(teacher.getId() + " " + teacher.getFirstName() + " " + teacher.getLastName() + " " + teacher.getAddress()
+                + " " + teacher.getPhoneNumber() + " " + teacher.getGender() + " " + teacher.getDepartment() + " " + teacher.getDesignation() + " " + teacher.getTeachingHours());
     }
 }
