@@ -1,6 +1,6 @@
 public class Person {
-    int id, phoneNumber;
-    String firstName, lastName, gender, address;
+    int id;
+    String firstName, lastName, gender, address, phoneNumber;
 
     public int getId() {
         return id;
@@ -10,11 +10,11 @@ public class Person {
         this.id = id;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

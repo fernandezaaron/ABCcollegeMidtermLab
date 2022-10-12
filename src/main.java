@@ -1,7 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
+
+
+
     public static void main(String[] args) {
+
         menu();
     }
 
@@ -14,7 +19,7 @@ public class main {
             System.out.println("Enter your choice: ");
             choose = scanner1.nextInt();
         }while(choose < 1 || choose > 2);
-        scanner1.close();
+//        scanner1.close();
         switch(choose){
             case 1:
                 studentMenu();
@@ -28,6 +33,10 @@ public class main {
 
 
     public static void studentMenu(){
+        ArrayList<Student> students = new ArrayList<>();
+        Student student = new Student();
+        String studentName;
+        int studentID;
         Scanner scanner = new Scanner(System.in);
         int choice;
         do{
@@ -41,13 +50,88 @@ public class main {
             System.out.println("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 1 || choice > 7);
-        scanner.close();
+//        scanner.close();
         switch(choice){
             case 1:
+                System.out.print("Enter Student ID: ");
+                student.setId(scanner.nextInt());
+
+                System.out.print("Enter First name: ");
+                student.setFirstName(scanner.next());
+
+                System.out.print("Enter Last name: ");
+                student.setLastName(scanner.next());
+
+                System.out.print("Enter Gender: ");
+                student.setGender(scanner.next());
+
+                System.out.print("Enter Address: ");
+                student.setAddress(scanner.next());
+
+                System.out.print("Enter Phone number: ");
+                student.setPhoneNumber(scanner.next());
+
+                System.out.println("Enter Number of Modules: ");
+                student.setNumberOfModules(scanner.nextInt());
+
+                System.out.println("Enter Number of Repeated Modules: ");
+                student.setNumberOfRepeatModules(scanner.nextInt());
+
+                System.out.println("Enter Amount Paid: ");
+                student.setAmountPaid(scanner.nextInt());
+
+                students.add(student);
+                System.out.println(students.get(0).getId());
+                System.out.println(students.get(0).getFirstName());
+                System.out.println(students.get(0).getLastName());
+                System.out.println(students.get(0).getAddress());
+                System.out.println(students.get(0).getPhoneNumber());
+                System.out.println(students.get(0).getGender());
                 break;
             case 2:
+                System.out.println("Enter Student ID to update: ");
+                studentID = scanner.nextInt();
+
+                for (int i=0; i<students.size(); i++){
+                    if(students.get(i).id == studentID){
+                        System.out.print("Enter First name: ");
+                        student.setFirstName(scanner.next());
+
+                        System.out.print("Enter Last name: ");
+                        student.setLastName(scanner.next());
+
+                        System.out.print("Enter Gender: ");
+                        student.setGender(scanner.next());
+
+                        System.out.print("Enter Address: ");
+                        student.setAddress(scanner.next());
+
+                        System.out.print("Enter Phone number: ");
+                        student.setPhoneNumber(scanner.next());
+
+                        System.out.println("Enter Number of Modules: ");
+                        student.setNumberOfModules(scanner.nextInt());
+
+                        System.out.println("Enter Number of Repeated Modules: ");
+                        student.setNumberOfRepeatModules(scanner.nextInt());
+
+                        System.out.println("Enter Amount Paid: ");
+                        student.setAmountPaid(scanner.nextInt());
+                        students.set(i,student);
+                    }
+
+                }
+
                 break;
             case 3:
+                System.out.println("Enter Student ID to update: ");
+                studentID = scanner.nextInt();
+
+                for (int i=0; i<students.size(); i++){
+                    if(students.get(i).id == studentID) {
+                        students.remove(student);
+                    }
+                }
                 break;
             case 4:
                 break;
@@ -61,6 +145,7 @@ public class main {
     }
 
     public static void teacherMenu(){
+        ArrayList<Teacher> teachers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int choice;
         do{

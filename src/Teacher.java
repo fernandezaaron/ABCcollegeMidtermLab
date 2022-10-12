@@ -1,7 +1,17 @@
 public class Teacher extends Person{
 
-    String department, designation;
-    int numberOfTeachingHours;
+    private String department, designation;
+    private int numberOfTeachingHours;
+
+    public Teacher(){
+        this.id = getId();
+        this.firstName = getFirstName();
+        this.lastName = getLastName();
+        this.gender = getGender();
+        this.address = getAddress();
+        this.phoneNumber = getPhoneNumber();
+    }
+
 
 
     // String designation = "CO";

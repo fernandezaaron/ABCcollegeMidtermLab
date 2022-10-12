@@ -1,10 +1,16 @@
 public class Student extends Person{
-    int numberOfModules, numberOfRepeatModules, amountPaid;
+    private int numberOfModules, numberOfRepeatModules, amountPaid;
 
-    public Student(int numberOfModules, int numberOfRepeatModules, int amountPaid){
-        this.numberOfModules = numberOfModules;
-        this.numberOfRepeatModules = numberOfRepeatModules;
-        this.amountPaid = amountPaid;
+    public Student(){
+        this.id = getId();
+        this.firstName = getFirstName();
+        this.lastName = getLastName();
+        this.gender = getGender();
+        this.address = getAddress();
+        this.phoneNumber = getPhoneNumber();
+        this.numberOfModules = getNumberOfModules();
+        this.numberOfRepeatModules = getNumberOfRepeatModules();
+        this.amountPaid = getAmountPaid();
         
     }
     public int getNumberOfModules() {
