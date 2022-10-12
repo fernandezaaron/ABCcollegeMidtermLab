@@ -9,7 +9,7 @@ public class Student extends Person{
         this.numberOfModules = numberOfModules;
         this.numberOfRepeatModules = numberOfRepeatModules;
         this.amountPaid = amountPaid;
-        this.tuitionfee = (this.numberOfModules * this.modulePrice) * (this.numberOfRepeatModules * repeatedModulePrice);
+        this.tuitionfee = (this.numberOfModules * this.modulePrice) + (this.numberOfRepeatModules * repeatedModulePrice);
         this.balance = tuitionfee - this.amountPaid;
     }
     public int getNumberOfModules() {
