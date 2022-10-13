@@ -19,9 +19,10 @@ public class main {
             System.out.println("1 - Student");
             System.out.println("2 - Teacher");
             System.out.println("0 - Exit Program");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             choose = scanner1.nextInt();
         }while(choose < 0 || choose > 2);
+//        scanner1.close();
         switch(choose){
             case 0:
                 System.exit(0);
@@ -49,10 +50,11 @@ public class main {
             System.out.println("5 - Fee deposit");
             System.out.println("6 - Display all students with zero balance");
             System.out.println("7 - Display all students with non-zero balance");
-            System.out.println("0 - Exit to menu");
-            System.out.println("Enter your choice: ");
+            System.out.println("0 - exit to menu");
+            System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 7);
+//        scanner.close();
         switch(choice){
             case 0:
                 for(int i=0; i<students.size(); i++){
@@ -67,19 +69,17 @@ public class main {
                 System.out.print("Enter Student ID: ");
                 student.setId(scanner.nextInt());
 
-                scanner.nextLine();
                 System.out.print("Enter First name: ");
-                student.setFirstName(scanner.nextLine());
+                student.setFirstName(scanner.next());
 
                 System.out.print("Enter Last name: ");
-                student.setLastName(scanner.nextLine());
+                student.setLastName(scanner.next());
 
                 System.out.print("Enter Gender: ");
                 student.setGender(scanner.next());
 
-                scanner.nextLine();
                 System.out.print("Enter Address: ");
-                student.setAddress(scanner.nextLine());
+                student.setAddress(scanner.next());
 
                 System.out.print("Enter Phone number: ");
                 student.setPhoneNumber(scanner.next());
@@ -104,19 +104,17 @@ public class main {
 
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID){
-                        scanner.nextLine();
                         System.out.print("Enter First name: ");
-                        students.get(i).setFirstName(scanner.nextLine());
+                        students.get(i).setFirstName(scanner.next());
 
                         System.out.print("Enter Last name: ");
-                        students.get(i).setLastName(scanner.nextLine());
+                        students.get(i).setLastName(scanner.next());
 
                         System.out.print("Enter Gender: ");
                         students.get(i).setGender(scanner.next());
 
-                        scanner.nextLine();
                         System.out.print("Enter Address: ");
-                        students.get(i).setAddress(scanner.nextLine());
+                        students.get(i).setAddress(scanner.next());
 
                         System.out.print("Enter Phone number: ");
                         students.get(i).setPhoneNumber(scanner.next());
@@ -126,7 +124,6 @@ public class main {
 
                         System.out.println("Enter Number of Repeated Modules: ");
                         students.get(i).setNumberOfRepeatModules(scanner.nextInt());
-                   
 
                         System.out.println("Enter Amount Paid: ");
                         students.get(i).setAmountPaid(scanner.nextInt());
@@ -151,18 +148,18 @@ public class main {
 
                 break;
             case 4:
-                System.out.println("Enter Student ID: ");
+                System.out.println("Enter Student ID to update: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
-                        System.out.println("Remaining Balance: " + students.get(i).getBalance());
+                        System.out.println(students.get(i).getBalance());
                     }
                 }
                 studentMenu();
 
                 break;
             case 5:
-                System.out.println("Enter Student ID: ");
+                System.out.println("Enter Student ID to update: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
@@ -207,8 +204,8 @@ public class main {
             System.out.println("3 - Delete teacher");
             System.out.println("4 - Calculate salary of a teacher");
             System.out.println("5 - Show all teachers");
-            System.out.println("0 - Exit to menu");
-            System.out.println("Enter your choice: ");
+            System.out.println("0 - exit to menu");
+            System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 5);
 //        scanner.close();
@@ -219,6 +216,10 @@ public class main {
             case 1:
                 Teacher teacher = new Teacher();
                 System.out.print("Enter Teacher ID: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Teacher ID: ");
+                    scanner.next();
+                }
                 teacher.setId(scanner.nextInt());
 
                 scanner.nextLine();
@@ -226,17 +227,20 @@ public class main {
                 teacher.setFirstName(scanner.nextLine());
 
                 System.out.print("Enter Last name: ");
-                teacher.setLastName(scanner.nextLine());
+                teacher.setLastName(scanner.next());
 
                 System.out.print("Enter Gender: ");
                 teacher.setGender(scanner.next());
 
-                scanner.nextLine();
                 System.out.print("Enter Address: ");
-                teacher.setAddress(scanner.nextLine());
+                teacher.setAddress(scanner.next());
 
                 System.out.print("Enter Phone number: ");
-                teacher.setPhoneNumber(scanner.next());
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Phone number: ");
+                    scanner.next();
+                }
+                teacher.setPhoneNumber(String.valueOf(scanner.nextInt()));
 
                 System.out.print("Enter Department(Business/Computing): ");
                 teacher.setDepartment(scanner.next());
@@ -253,6 +257,8 @@ public class main {
                     System.out.print("Enter Designation(HOF/CO/L): ");
                     teacher.setDesignation(scanner.next());
                 }
+
+
 
                 System.out.print("Enter Teaching Hours: ");
                 teacher.setTeachingHours(scanner.nextInt());
@@ -273,28 +279,27 @@ public class main {
                         teachers.get(i).setFirstName(scanner.nextLine());
 
                         System.out.print("Enter Last name: ");
-                        teachers.get(i).setLastName(scanner.nextLine());
+                        teachers.get(i).setLastName(scanner.next());
 
                         System.out.print("Enter Gender: ");
                         teachers.get(i).setGender(scanner.next());
 
-                        scanner.nextLine();
                         System.out.print("Enter Address: ");
-                        teachers.get(i).setAddress(scanner.nextLine());
+                        teachers.get(i).setAddress(scanner.next());
 
                         System.out.print("Enter Phone number: ");
                         teachers.get(i).setPhoneNumber(scanner.next());
 
                         System.out.print("Enter Department(Business/Computing): ");
                         teachers.get(i).setDepartment(scanner.next());
-                        while (!teachers.get(i).getDepartment().equals("Computing") && !teachers.get(i).getDepartment().equals("Business")){
+                        if(!teachers.get(i).getDepartment().equals("computing") || !teachers.get(i).getDepartment().equals("business")){
                             System.out.print("Enter Department(Business/Computing): ");
                             teachers.get(i).setDepartment(scanner.next());
                         }
 
                         System.out.print("Enter Designation(HOF/CO/L): ");
                         teachers.get(i).setDesignation(scanner.next());
-                        while (!teachers.get(i).getDesignation().equals("HOF") && !teachers.get(i).getDesignation().equals("CO") && !teachers.get(i).getDesignation().equals("L")){
+                        if(!teachers.get(i).getDepartment().equals("HOF") || !teachers.get(i).getDepartment().equals("CO") || !teachers.get(i).getDepartment().equals("L")){
                             System.out.print("Enter Designation(HOF/CO/L): ");
                             teachers.get(i).setDesignation(scanner.next());
                         }

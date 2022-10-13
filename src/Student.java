@@ -9,6 +9,8 @@ public class Student extends Person{
     public int feeDeposit(int amountPaid){
         return this.balance -= amountPaid;
     }
+
+
     public int getNumberOfModules() {
         return numberOfModules;
     }
