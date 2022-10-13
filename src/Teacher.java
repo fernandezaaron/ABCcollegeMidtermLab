@@ -24,6 +24,9 @@ public class Teacher extends Person{
                 this.department = department;
                 break;
         }
+        this.department = department;
+
+
     }
 
     public String getDesignation() {
@@ -38,6 +41,8 @@ public class Teacher extends Person{
                 this.designation = designation;
                 break;
         }
+        this.designation = designation;
+
     }
 
     public int getTeachingHours() {

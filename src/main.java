@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class main {
@@ -17,11 +18,15 @@ public class main {
         do{
             System.out.println("1 - Student");
             System.out.println("2 - Teacher");
+            System.out.println("0 - Exit Program");
             System.out.println("Enter your choice: ");
             choose = scanner1.nextInt();
-        }while(choose < 1 || choose > 2);
+        }while(choose < 0 || choose > 2);
 //        scanner1.close();
         switch(choose){
+            case 0:
+                System.exit(0);
+                break;
             case 1:
                 studentMenu();
                 break;
@@ -213,8 +218,9 @@ public class main {
                 System.out.print("Enter Teacher ID: ");
                 teacher.setId(scanner.nextInt());
 
+                scanner.nextLine();
                 System.out.print("Enter First name: ");
-                teacher.setFirstName(scanner.next());
+                teacher.setFirstName(scanner.nextLine());
 
                 System.out.print("Enter Last name: ");
                 teacher.setLastName(scanner.next());
@@ -229,13 +235,26 @@ public class main {
                 teacher.setPhoneNumber(scanner.next());
 
                 System.out.print("Enter Department(Business/Computing): ");
-                teacher.setDepartment(scanner.next());
+                teacher.setDepartment(scanner.next().toLowerCase());
+                if(!teacher.getDepartment().equals("computing") || !teacher.getDepartment().equals("business")){
+                    System.out.print("Enter Department(Business/Computing): ");
+                    teacher.setDepartment(scanner.next());
+                }
 
                 System.out.print("Enter Designation(HOF/CO/L): ");
                 teacher.setDesignation(scanner.next());
+                for(int i=0; i<teacher.getDesignation().length(); i++){
+                    if(teacher.getDesignation().equalsIgnoreCase(String.valueOf(i))){
+                        
+                    }
+                    if(!teacher.getDepartment().equals("HOF") || !teacher.getDepartment().equals("CO") || !teacher.getDepartment().equals("L")){
+                        System.out.print("Enter Designation(HOF/CO/L): ");
+                        teacher.setDesignation(scanner.next());
+                    }
+                }
+
 
                 System.out.print("Enter Teaching Hours: ");
-
                 teacher.setTeachingHours(scanner.nextInt());
 
                 teachers.add(teacher);
@@ -248,8 +267,10 @@ public class main {
 
                 for (int i=0; i<teachers.size(); i++){
                     if(teacherID == teachers.get(i).getId()){
+
+                        scanner.nextLine();
                         System.out.print("Enter First name: ");
-                        teachers.get(i).setFirstName(scanner.next());
+                        teachers.get(i).setFirstName(scanner.nextLine());
 
                         System.out.print("Enter Last name: ");
                         teachers.get(i).setLastName(scanner.next());
@@ -265,9 +286,18 @@ public class main {
 
                         System.out.print("Enter Department(Business/Computing): ");
                         teachers.get(i).setDepartment(scanner.next());
+                        if(!teachers.get(i).getDepartment().equals("computing") || !teachers.get(i).getDepartment().equals("business")){
+                            System.out.print("Enter Department(Business/Computing): ");
+                            teachers.get(i).setDepartment(scanner.next());
+                        }
 
                         System.out.print("Enter Designation(HOF/CO/L): ");
                         teachers.get(i).setDesignation(scanner.next());
+                        if(!teachers.get(i).getDepartment().equals("HOF") || !teachers.get(i).getDepartment().equals("CO") || !teachers.get(i).getDepartment().equals("L")){
+                            System.out.print("Enter Designation(HOF/CO/L): ");
+                            teachers.get(i).setDesignation(scanner.next());
+                        }
+
 
                         System.out.print("Enter Teaching Hours: ");
                         teachers.get(i).setTeachingHours(scanner.nextInt());
