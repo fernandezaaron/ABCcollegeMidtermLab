@@ -165,7 +165,7 @@ public class main {
                             System.out.print("Enter Number of Repeated Modules: ");
                             scanner.next();
                         }
-                        
+
                         students.get(i).setNumberOfRepeatModules(scanner.nextInt());
                         while(students.get(i).getNumberOfRepeatModules() > 2 || students.get(i).getNumberOfRepeatModules() < 0){
                             System.out.print("Enter Number of Repeated Modules: ");
