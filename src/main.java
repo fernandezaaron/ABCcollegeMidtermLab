@@ -245,7 +245,7 @@ public class main {
                 teacher.setDesignation(scanner.next());
                 for(int i=0; i<teacher.getDesignation().length(); i++){
                     if(teacher.getDesignation().equalsIgnoreCase(String.valueOf(i))){
-                        
+
                     }
                     if(!teacher.getDepartment().equals("HOF") || !teacher.getDepartment().equals("CO") || !teacher.getDepartment().equals("L")){
                         System.out.print("Enter Designation(HOF/CO/L): ");
