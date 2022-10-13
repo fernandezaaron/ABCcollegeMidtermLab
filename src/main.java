@@ -126,6 +126,7 @@ public class main {
 
                         System.out.println("Enter Number of Repeated Modules: ");
                         students.get(i).setNumberOfRepeatModules(scanner.nextInt());
+                   
 
                         System.out.println("Enter Amount Paid: ");
                         students.get(i).setAmountPaid(scanner.nextInt());
@@ -150,18 +151,18 @@ public class main {
 
                 break;
             case 4:
-                System.out.println("Enter Student ID to update: ");
+                System.out.println("Enter Student ID: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
-                        System.out.println(students.get(i).getBalance());
+                        System.out.println("Remaining Balance: " + students.get(i).getBalance());
                     }
                 }
                 studentMenu();
 
                 break;
             case 5:
-                System.out.println("Enter Student ID to update: ");
+                System.out.println("Enter Student ID: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
