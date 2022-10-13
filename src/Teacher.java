@@ -8,7 +8,13 @@ public class Teacher extends Person{
     public String getDepartment() {
         return department;
     }
+    /*
+         @Method - This function is used to set the department to business or computing only
+         and transform the final department into capitalized first letter.
+         @parameter:
+             String department - It is used to determine the department of the teacher that accepts any String format.
 
+     */
     public void setDepartment(String department) {
         department = department.toLowerCase();
         switch (department) {
@@ -43,26 +49,6 @@ public class Teacher extends Person{
 
 
     }
-// String designation = "CO";
-    // int teachHours = 18;
-
-    // totalSalary += overTimeSalary(designation, teachHours);
-    // float housingAllowance = calculateHousingAllowance(totalSalary);
-    // float medicalAllowance = calculateMedicalAllowance(totalSalary);
-    // float travellingAllowance = calculateTravellingAllowance(totalSalary);
-    // float netSalary = calculateNetSalary(totalSalary, housingAllowance, medicalAllowance, travellingAllowance);
-
-    // System.out.println("HOUSE : " + housingAllowance);
-    // System.out.println("MEDICAL : " + medicalAllowance);
-    // System.out.println("TRAVELING : " + travellingAllowance);
-
-    // System.out.println("TOTAL : " + totalSalary);
-
-    // System.out.println("NET : " + netSalary);
-
-
-
-
 
     /*
         @Method - This function is used to calculate Net Salary of the teacher.
