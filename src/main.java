@@ -235,23 +235,23 @@ public class main {
                 teacher.setPhoneNumber(scanner.next());
 
                 System.out.print("Enter Department(Business/Computing): ");
-                teacher.setDepartment(scanner.next().toLowerCase());
-                if(!teacher.getDepartment().equals("computing") || !teacher.getDepartment().equals("business")){
+                teacher.setDepartment(scanner.next());
+
+                while (!teacher.getDepartment().equals("Computing") && !teacher.getDepartment().equals("Business")){
                     System.out.print("Enter Department(Business/Computing): ");
                     teacher.setDepartment(scanner.next());
+
+
                 }
 
                 System.out.print("Enter Designation(HOF/CO/L): ");
                 teacher.setDesignation(scanner.next());
-                for(int i=0; i<teacher.getDesignation().length(); i++){
-                    if(teacher.getDesignation().equalsIgnoreCase(String.valueOf(i))){
 
-                    }
-                    if(!teacher.getDepartment().equals("HOF") || !teacher.getDepartment().equals("CO") || !teacher.getDepartment().equals("L")){
-                        System.out.print("Enter Designation(HOF/CO/L): ");
-                        teacher.setDesignation(scanner.next());
-                    }
+                while (!teacher.getDepartment().equals("HOF") && !teacher.getDepartment().equals("CO") && !teacher.getDepartment().equals("L")){
+                    System.out.print("Enter Designation(HOF/CO/L): ");
+                    teacher.setDesignation(scanner.next());
                 }
+
 
 
                 System.out.print("Enter Teaching Hours: ");

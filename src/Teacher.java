@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Teacher extends Person{
     private String department, designation;
     private int teachingHours;
@@ -21,7 +23,6 @@ public class Teacher extends Person{
             case "business":
             case "computing":
                 department = department.substring(0,1).toUpperCase() + department.substring(1).toLowerCase();
-                this.department = department;
                 break;
         }
         this.department = department;
@@ -34,11 +35,12 @@ public class Teacher extends Person{
     }
 
     public void setDesignation(String designation) {
+        designation = designation.toLowerCase();
         switch (designation){
-            case "HOF":
-            case "CO":
-            case "L":
-                this.designation = designation;
+            case "hof":
+            case "co":
+            case "l":
+                designation = designation.toUpperCase();
                 break;
         }
         this.designation = designation;
