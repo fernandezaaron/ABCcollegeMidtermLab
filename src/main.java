@@ -19,7 +19,7 @@ public class main {
             System.out.println("1 - Student");
             System.out.println("2 - Teacher");
             System.out.println("0 - Exit Program");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             choose = scanner1.nextInt();
         }while(choose < 0 || choose > 2);
 //        scanner1.close();
@@ -51,7 +51,7 @@ public class main {
             System.out.println("6 - Display all students with zero balance");
             System.out.println("7 - Display all students with non-zero balance");
             System.out.println("0 - exit to menu");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 7);
 //        scanner.close();
@@ -205,7 +205,7 @@ public class main {
             System.out.println("4 - Calculate salary of a teacher");
             System.out.println("5 - Show all teachers");
             System.out.println("0 - exit to menu");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 5);
 //        scanner.close();
@@ -216,6 +216,10 @@ public class main {
             case 1:
                 Teacher teacher = new Teacher();
                 System.out.print("Enter Teacher ID: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Teacher ID: ");
+                    scanner.next();
+                }
                 teacher.setId(scanner.nextInt());
 
                 scanner.nextLine();
@@ -232,7 +236,11 @@ public class main {
                 teacher.setAddress(scanner.next());
 
                 System.out.print("Enter Phone number: ");
-                teacher.setPhoneNumber(scanner.next());
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Phone number: ");
+                    scanner.next();
+                }
+                teacher.setPhoneNumber(String.valueOf(scanner.nextInt()));
 
                 System.out.print("Enter Department(Business/Computing): ");
                 teacher.setDepartment(scanner.next());
@@ -240,14 +248,12 @@ public class main {
                 while (!teacher.getDepartment().equals("Computing") && !teacher.getDepartment().equals("Business")){
                     System.out.print("Enter Department(Business/Computing): ");
                     teacher.setDepartment(scanner.next());
-
-
                 }
 
                 System.out.print("Enter Designation(HOF/CO/L): ");
                 teacher.setDesignation(scanner.next());
 
-                while (!teacher.getDepartment().equals("HOF") && !teacher.getDepartment().equals("CO") && !teacher.getDepartment().equals("L")){
+                while (!teacher.getDesignation().equals("HOF") && !teacher.getDesignation().equals("CO") && !teacher.getDesignation().equals("L")){
                     System.out.print("Enter Designation(HOF/CO/L): ");
                     teacher.setDesignation(scanner.next());
                 }

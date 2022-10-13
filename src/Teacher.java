@@ -44,7 +44,6 @@ public class Teacher extends Person{
                 break;
         }
         this.designation = designation;
-
     }
 
     public int getTeachingHours() {
