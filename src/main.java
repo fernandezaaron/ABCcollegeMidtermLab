@@ -54,16 +54,19 @@ public class main {
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
         }while(choice < 0 || choice > 7);
-//        scanner.close();
         switch(choice){
             case 0:
-                for(int i=0; i<students.size(); i++){
-                    printStudents(students.get(i));
-                }
-                studentMenu();
+//                for(int i=0; i<students.size(); i++){
+//                    printStudents(students.get(i));
+//                }
+//                studentMenu();
+                menu();
                 break;
-//                menu();
             case 1:
+                /**
+                 * creates a new student object and adds it to
+                 * an arraylist named students
+                 * **/
                 Student student = new Student();
 
                 System.out.print("Enter Student ID: ");
@@ -88,6 +91,8 @@ public class main {
                 student.setAddress(scanner.nextLine());
 
                 System.out.print("Enter Phone number: ");
+
+                /** Error Handling if user inputs a string on intger valued variables **/
                 while (!scanner.hasNextInt()){
                     System.out.print("Enter Phone number: ");
                     scanner.next();
@@ -109,6 +114,8 @@ public class main {
                 }
 
                 student.setNumberOfRepeatModules(scanner.nextInt());
+
+                /** Error handling (constraint) if user inputs more than 2 or less than 0 number of repeated modules **/
                 while(student.getNumberOfRepeatModules() > 2 || student.getNumberOfRepeatModules() < 0){
                     System.out.print("Enter Number of Repeated Modules: ");
                     student.setNumberOfRepeatModules(scanner.nextInt());
@@ -127,6 +134,7 @@ public class main {
                 break;
 
             case 2:
+                /** updates a student's information basing on the ID **/
                 System.out.println("Enter Student ID to update: ");
                 studentID = scanner.nextInt();
 
@@ -187,7 +195,8 @@ public class main {
 
                 break;
             case 3:
-                System.out.println("Enter Student ID to update: ");
+                /** removes the student basing on the user input ID **/
+                System.out.println("Enter Student ID to remove: ");
                 studentID = scanner.nextInt();
 
                 for (int i=0; i<students.size(); i++){
@@ -199,7 +208,8 @@ public class main {
 
                 break;
             case 4:
-                System.out.println("Enter Student ID to update: ");
+                /** gets the remaining balance of the student **/
+                System.out.println("Enter Student ID to get the balance: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
@@ -210,7 +220,8 @@ public class main {
 
                 break;
             case 5:
-                System.out.println("Enter Student ID to update: ");
+                /** deposits fee **/
+                System.out.println("Enter Student ID to deposit fee: ");
                 studentID = scanner.nextInt();
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID) {
@@ -224,6 +235,7 @@ public class main {
 
                 break;
             case 6:
+                /** prints all students with a balance of 0, doesnt print anything if there are none **/
                 for(int i=0; i<students.size(); i++){
                     if(students.get(i).getBalance() == 0){
                         printStudents(students.get(i));
@@ -234,6 +246,7 @@ public class main {
 
                 break;
             case 7:
+                /** prints all students with a non-zero balance, doesnt print anything if there are none **/
                 for(int i=0; i<students.size(); i++){
                     if(students.get(i).getBalance() != 0){
                         printStudents(students.get(i));
@@ -265,8 +278,13 @@ public class main {
                 menu();
                 break;
             case 1:
+                /** Creates a new teacher object to be
+                 * added to an arraylist called teachers
+                 */
                 Teacher teacher = new Teacher();
                 System.out.print("Enter Teacher ID: ");
+
+                /** Error handling for non-integer inputs **/
                 while (!scanner.hasNextInt()){
                     System.out.print("Enter Teacher ID: ");
                     scanner.next();
@@ -297,6 +315,7 @@ public class main {
                 System.out.print("Enter Department(Business/Computing): ");
                 teacher.setDepartment(scanner.next());
 
+                /** Constraint handling that will loop until department is equals to computing or business **/
                 while (!teacher.getDepartment().equals("Computing") && !teacher.getDepartment().equals("Business")){
                     System.out.print("Enter Department(Business/Computing): ");
                     teacher.setDepartment(scanner.next());
@@ -305,6 +324,7 @@ public class main {
                 System.out.print("Enter Designation(HOF/CO/L): ");
                 teacher.setDesignation(scanner.next());
 
+                /** Constraint handling that will loop until designation is equals to HOF or CO or L **/
                 while (!teacher.getDesignation().equals("HOF") && !teacher.getDesignation().equals("CO") && !teacher.getDesignation().equals("L")){
                     System.out.print("Enter Designation(HOF/CO/L): ");
                     teacher.setDesignation(scanner.next());
@@ -323,6 +343,7 @@ public class main {
                 break;
 
             case 2:
+                /** updates teacher's information **/
                 System.out.print("Enter Teacher ID: ");
                 teacherID = scanner.nextInt();
 
@@ -352,17 +373,18 @@ public class main {
 
                         System.out.print("Enter Department(Business/Computing): ");
                         teachers.get(i).setDepartment(scanner.next());
-                        if(!teachers.get(i).getDepartment().equals("computing") || !teachers.get(i).getDepartment().equals("business")){
+                        while (! teachers.get(i).getDepartment().equals("Computing") && ! teachers.get(i).getDepartment().equals("Business")){
                             System.out.print("Enter Department(Business/Computing): ");
                             teachers.get(i).setDepartment(scanner.next());
                         }
 
                         System.out.print("Enter Designation(HOF/CO/L): ");
                         teachers.get(i).setDesignation(scanner.next());
-                        if(!teachers.get(i).getDepartment().equals("HOF") || !teachers.get(i).getDepartment().equals("CO") || !teachers.get(i).getDepartment().equals("L")){
+                        while (!teachers.get(i).getDesignation().equals("HOF") && !teachers.get(i).getDesignation().equals("CO") && !teachers.get(i).getDesignation().equals("L")){
                             System.out.print("Enter Designation(HOF/CO/L): ");
                             teachers.get(i).setDesignation(scanner.next());
                         }
+
 
 
                         System.out.print("Enter Teaching Hours: ");
@@ -379,7 +401,8 @@ public class main {
                 teacherMenu();
                 break;
             case 3:
-                System.out.print("Enter Teacher ID: ");
+                /** removes teacher basing on the ID given by the user input **/
+                System.out.print("Enter Teacher ID to remove: ");
                 teacherID = scanner.nextInt();
 
                 for (int i=0; i<teachers.size(); i++){
@@ -390,7 +413,8 @@ public class main {
                 teacherMenu();
                 break;
             case 4:
-                System.out.print("Enter Teacher ID: ");
+                /** gets the teacher's net salary **/
+                System.out.print("Enter Teacher ID to get net salary: ");
                 teacherID = scanner.nextInt();
 
                 for (int i=0; i<teachers.size(); i++){
@@ -401,6 +425,7 @@ public class main {
                 teacherMenu();
                 break;
             case 5:
+                /** prints all teachers in the list **/
                 for(int i=0; i<teachers.size(); i++){
                     printTeachers(teachers.get(i));
                 }
@@ -409,6 +434,7 @@ public class main {
         }
     }
 
+    /** format printing **/
     public static void printStudents(Student student){
         System.out.println(student.getId() + " " + student.getFirstName() + " " + student.getLastName() + " " + student.getAddress()
                 + " " + student.getPhoneNumber() + " " + student.getGender() + " " + student.getNumberOfModules() + " " + student.getNumberOfRepeatModules() + " " + student.getAmountPaid());
