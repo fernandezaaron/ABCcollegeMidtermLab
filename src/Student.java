@@ -35,8 +35,8 @@ public class Student extends Person{
              int numberOfRepeatModules - the number of repeating modules of the student between 0 and 2.
     */
     public void setNumberOfRepeatModules(int numberOfRepeatModules) {
+        this.numberOfRepeatModules = numberOfRepeatModules;
         if(numberOfRepeatModules >= 0 && numberOfRepeatModules <= 2) {
-            this.numberOfRepeatModules = numberOfRepeatModules;
             this.tuitionfee += this.numberOfRepeatModules * repeatedModulePrice;
         }
     }

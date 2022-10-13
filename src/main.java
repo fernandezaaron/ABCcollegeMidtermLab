@@ -67,30 +67,58 @@ public class main {
                 Student student = new Student();
 
                 System.out.print("Enter Student ID: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Student ID: ");
+                    scanner.next();
+                }
                 student.setId(scanner.nextInt());
 
+                scanner.nextLine();
                 System.out.print("Enter First name: ");
-                student.setFirstName(scanner.next());
+                student.setFirstName(scanner.nextLine());
 
                 System.out.print("Enter Last name: ");
-                student.setLastName(scanner.next());
+                student.setLastName(scanner.nextLine());
 
                 System.out.print("Enter Gender: ");
                 student.setGender(scanner.next());
 
+                scanner.nextLine();
                 System.out.print("Enter Address: ");
-                student.setAddress(scanner.next());
+                student.setAddress(scanner.nextLine());
 
                 System.out.print("Enter Phone number: ");
-                student.setPhoneNumber(scanner.next());
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Phone number: ");
+                    scanner.next();
+                }
+                student.setPhoneNumber(String.valueOf(scanner.nextInt()));
+
 
                 System.out.print("Enter Number of Modules: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Number of Modules: ");
+                    scanner.next();
+                }
                 student.setNumberOfModules(scanner.nextInt());
 
                 System.out.print("Enter Number of Repeated Modules: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Number of Repeated Modules: ");
+                    scanner.next();
+                }
+
                 student.setNumberOfRepeatModules(scanner.nextInt());
+                while(student.getNumberOfRepeatModules() > 2 || student.getNumberOfRepeatModules() < 0){
+                    System.out.print("Enter Number of Repeated Modules: ");
+                    student.setNumberOfRepeatModules(scanner.nextInt());
+                }
 
                 System.out.print("Enter Amount Paid: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Amount Paid: ");
+                    scanner.next();
+                }
                 student.setAmountPaid(scanner.nextInt());
 
                 students.add(student);
@@ -104,28 +132,51 @@ public class main {
 
                 for (int i=0; i<students.size(); i++){
                     if(students.get(i).id == studentID){
+                        scanner.nextLine();
                         System.out.print("Enter First name: ");
-                        students.get(i).setFirstName(scanner.next());
+                        students.get(i).setFirstName(scanner.nextLine());
 
                         System.out.print("Enter Last name: ");
-                        students.get(i).setLastName(scanner.next());
+                        students.get(i).setLastName(scanner.nextLine());
 
                         System.out.print("Enter Gender: ");
                         students.get(i).setGender(scanner.next());
 
+                        scanner.nextLine();
                         System.out.print("Enter Address: ");
-                        students.get(i).setAddress(scanner.next());
+                        students.get(i).setAddress(scanner.nextLine());
 
                         System.out.print("Enter Phone number: ");
-                        students.get(i).setPhoneNumber(scanner.next());
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Phone number: ");
+                            scanner.next();
+                        }
+                        students.get(i).setPhoneNumber(String.valueOf(scanner.nextInt()));
 
                         System.out.println("Enter Number of Modules: ");
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Number of Modules: ");
+                            scanner.next();
+                        }
                         students.get(i).setNumberOfModules(scanner.nextInt());
 
                         System.out.println("Enter Number of Repeated Modules: ");
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Number of Repeated Modules: ");
+                            scanner.next();
+                        }
+                        
                         students.get(i).setNumberOfRepeatModules(scanner.nextInt());
+                        while(students.get(i).getNumberOfRepeatModules() > 2 || students.get(i).getNumberOfRepeatModules() < 0){
+                            System.out.print("Enter Number of Repeated Modules: ");
+                            students.get(i).setNumberOfRepeatModules(scanner.nextInt());
+                        }
 
                         System.out.println("Enter Amount Paid: ");
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Amount Paid: ");
+                            scanner.next();
+                        }
                         students.get(i).setAmountPaid(scanner.nextInt());
                         students.set(i,students.get(i));
 
@@ -227,13 +278,14 @@ public class main {
                 teacher.setFirstName(scanner.nextLine());
 
                 System.out.print("Enter Last name: ");
-                teacher.setLastName(scanner.next());
+                teacher.setLastName(scanner.nextLine());
 
                 System.out.print("Enter Gender: ");
                 teacher.setGender(scanner.next());
 
+                scanner.nextLine();
                 System.out.print("Enter Address: ");
-                teacher.setAddress(scanner.next());
+                teacher.setAddress(scanner.nextLine());
 
                 System.out.print("Enter Phone number: ");
                 while (!scanner.hasNextInt()){
@@ -259,8 +311,11 @@ public class main {
                 }
 
 
-
                 System.out.print("Enter Teaching Hours: ");
+                while (!scanner.hasNextInt()){
+                    System.out.print("Enter Teaching Hours: ");
+                    scanner.next();
+                }
                 teacher.setTeachingHours(scanner.nextInt());
 
                 teachers.add(teacher);
@@ -279,16 +334,21 @@ public class main {
                         teachers.get(i).setFirstName(scanner.nextLine());
 
                         System.out.print("Enter Last name: ");
-                        teachers.get(i).setLastName(scanner.next());
+                        teachers.get(i).setLastName(scanner.nextLine());
 
                         System.out.print("Enter Gender: ");
                         teachers.get(i).setGender(scanner.next());
 
+                        scanner.nextLine();
                         System.out.print("Enter Address: ");
-                        teachers.get(i).setAddress(scanner.next());
+                        teachers.get(i).setAddress(scanner.nextLine());
 
                         System.out.print("Enter Phone number: ");
-                        teachers.get(i).setPhoneNumber(scanner.next());
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Phone number: ");
+                            scanner.next();
+                        }
+                        teachers.get(i).setPhoneNumber(String.valueOf(scanner.nextInt()));
 
                         System.out.print("Enter Department(Business/Computing): ");
                         teachers.get(i).setDepartment(scanner.next());
@@ -306,6 +366,10 @@ public class main {
 
 
                         System.out.print("Enter Teaching Hours: ");
+                        while (!scanner.hasNextInt()){
+                            System.out.print("Enter Teaching Hours: ");
+                            scanner.next();
+                        }
                         teachers.get(i).setTeachingHours(scanner.nextInt());
 
                         teachers.set(i, teachers.get(i));
